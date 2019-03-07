@@ -21,17 +21,28 @@ class TicToe {
                     tictac_string[i] = toupper(tictac_string[i]);
                 }
                 
-                
-                
-                
-                
                 bool X_win = false;
                 bool O_win = false;
                 // invalid input if the string length is greater than 9.
+                if (CheckForHoriWinner('X', tictac_string)) {
+                    X_win = true;
+                }
+                if (CheckForHoriWinner('O', tictac_string)) {
+                    O_win = true;
+                }
+                if (CheckForVertiWinner('X', tictac_string)) {
+                    X_win = true;
+                }
+                if (CheckForVertiWinner('O', tictac_string)) {
+                    O_win = true;
+                }
+                    
+                
     
                 //to check the no. of X's and O's
                 int num_of_Os = 0;
                 int num_of_Xs = 0;
+                
                 
                 
                 for (int i = 0; i < boardState.size(); i++) {
@@ -77,7 +88,24 @@ class TicToe {
     
     
     public:
-          bool static CheckForWinner
+    bool static CheckForHoriWinner(char ch, std::string input_string) {
+        for (int i = 0; i < input_string.size(); i+=3) {
+            if ((input_string[i] == 'ch') && (input_string[i + 1] == 'ch') &&(input_string[i + 2] == 'ch')) {
+                return true ;
+            }
+        }
+        return false;
+    }
+public:
+    bool static CheckForVertiWinner(char ch, std::string input_string) {
+        for (int i = 0; i < input_string.size(); i++) {
+            if ((input_string[i] == 'ch') && (input_string[i + 3] == 'ch') &&(input_string[i + 6] == 'ch')) {
+                return true ;
+            }
+        }
+        return false;
+    }
+    
 };
 
 
