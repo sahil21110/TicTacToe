@@ -14,6 +14,12 @@ class TicToe {
                 // implement your code here
                 
                 std::string tictac_string = boardState;
+                if (tictac_string.size() == 0){
+                    return TicTacToeState_h::InvalidInput;
+                }
+                    
+                
+                
                 if (tictac_string.length() != 9) {
                     return TicTacToeState::InvalidInput;
                 }
@@ -96,10 +102,19 @@ class TicToe {
         }
         return false;
     }
-public:
+    public:
     bool static CheckForVertiWinner(char ch, std::string input_string) {
-        for (int i = 0; i < input_string.size(); i++) {
+        for (int i = 0; i <= 3; i++) {
             if ((input_string[i] == 'ch') && (input_string[i + 3] == 'ch') &&(input_string[i + 6] == 'ch')) {
+                return true ;
+            }
+        }
+        return false;
+    }
+    public:
+    bool static CheckForDiagWinner(char ch, std::string input_string) {
+        for (int i = 0; i <= 2; i=+2) {
+            if ((input_string[i] == 'ch') && (input_string[i + 4] == 'ch') &&(input_string[i + 4] == 'ch')) {
                 return true ;
             }
         }
