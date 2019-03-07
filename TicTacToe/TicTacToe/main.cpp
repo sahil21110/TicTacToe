@@ -7,9 +7,78 @@
 //
 
 #include <iostream>
+#include "TicTacToeState.hpp"
+class TicToe {
+    public:
+            TicTacToeState static CheckTicTacToeBoard(std::string boardState) {
+                // implement your code here
+                
+                std::string tictac_string = boardState;
+                if (tictac_string.length() != 9) {
+                    return TicTacToeState::InvalidInput;
+                }
+                for (int i = 0; i < tictac_string.size(); i++) {
+                    tictac_string[i] = toupper(tictac_string[i]);
+                }
+                
+                
+                
+                
+                
+                bool X_win = false;
+                bool O_win = false;
+                // invalid input if the string length is greater than 9.
+    
+                //to check the no. of X's and O's
+                int num_of_Os = 0;
+                int num_of_Xs = 0;
+                
+                
+                for (int i = 0; i < boardState.size(); i++) {
+                    if (boardState[i] == 'X') {
+                        num_of_Xs++;
+                    }
+                    if (boardState[i] == 'O') {
+                        num_of_Os++;
+                    }
+                    
+                }
+    
+    // code to check if the current state is unreachable.
+    if (( num_of_Xs- num_of_Os > 1 || num_of_Os - num_of_Xs < 0) ) {
+        return TicTacToeState::UnreachableState;
+        
+    }
+    if (num_of_Xs == num_of_Os && X_win ) {
+        return TicTacToeState::UnreachableState;
+        
+    }
+    if (num_of_Xs > num_of_Os && O_win ) {
+        return TicTacToeState::UnreachableState;
+        
+    }
+    if (O_win && X_win) {
+        return TicTacToeState::UnreachableState;
+        
+    }
+    
+    // CODE TO CHECK THE WINNER AND IF THERE IS NO WINNER.
+    
+    if (X_win) {
+        return TicTacToeState::Xwins;
+    } else if (O_win) {
+        return TicTacToeState::Owins;
+    } else {
+        return  TicTacToeState::NoWinner;
+    }
+    
+    
+   }
+    
+    
+    public:
+          bool static CheckForWinner
+};
 
-int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
-    return 0;
-}
+
+
